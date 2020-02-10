@@ -20,8 +20,6 @@ function init() {
     const typekey1 = document.querySelector("#typekey1");
     const typekey2 = document.querySelector("#typekey2");
     const typespace = document.querySelector("#typespace");
-    const typelast = document.querySelector("#typelast");
-    const typereturn = document.querySelector("#typereturn");
 
     // Audio array for random keysound
 
@@ -53,7 +51,3 @@ function init() {
   });
 }
 // Find each .typewritten class and apply above steps one at a time
-
-// Find <br> in string
-
-// Add correct sounds and delay for <br>
