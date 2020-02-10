@@ -7,6 +7,8 @@ let len = text.length;
 let e = 0;
 let newString = "";
 
+document.querySelector(".typewritten").textContent = "";
+
 // Cut string into individual bits and put them together
 let eachCut = setInterval(cutTheString, 200);
 
@@ -14,12 +16,13 @@ function cutTheString() {
   if (e + 1 == len) {
     clearInterval(eachCut);
   }
+  // Figure out whether the character is a space or any other character
+
   newString = newString + text[e];
   console.log(newString);
+  document.querySelector(".typewritten").textContent = newString;
   e++;
 }
-
-// Figure out whether the character is a space or any other character
 
 // Play sound according to the character
 
