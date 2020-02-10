@@ -1,7 +1,7 @@
 "use strict";
-// window.addEventListener("DOMContentLoaded", init);
+window.addEventListener("DOMContentLoaded", init);
 
-setInterval(function() {
+function init() {
   // Define elements
   let texts = document.querySelectorAll(".typewritten");
   texts.forEach(function(oneText) {
@@ -51,7 +51,7 @@ setInterval(function() {
       e++;
     }
   });
-}, 3000);
+}
 // Find each .typewritten class and apply above steps one at a time
 
 // Find <br> in string
