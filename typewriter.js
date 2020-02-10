@@ -3,21 +3,21 @@ window.addEventListener("DOMContentLoaded", cutTheString);
 // Define strings
 
 let text = document.querySelector(".typewritten").textContent;
-
 let len = text.length;
+let e = 0;
+let newString = "";
 
-// Cut string into individual bits
+// Cut string into individual bits and put them together
+let eachCut = setInterval(cutTheString, 200);
 
 function cutTheString() {
-  for (let i = 0; i < len; i++) {
-    setTimeout(test, 1000);
-    function test() {
-      console.log(i);
-    }
+  if (e + 1 == len) {
+    clearInterval(eachCut);
   }
+  newString = newString + text[e];
+  console.log(newString);
+  e++;
 }
-
-// Put them back together one at a time
 
 // Figure out whether the character is a space or any other character
 
