@@ -28,7 +28,9 @@ function init() {
     // Cut string into individual bits and put them together
     function startTyping() {
       button.removeEventListener("click", startTyping);
-      eachCut = setInterval(cutTheString, 200);
+      let randomSpeed = Math.floor(Math.random() * (400 - 200) + 200);
+      eachCut = setInterval(cutTheString, randomSpeed);
+      console.log(randomSpeed);
     }
 
     function cutTheString() {
@@ -47,6 +49,8 @@ function init() {
       console.log(newString);
       oneText.textContent = newString;
       e++;
+      clearInterval(eachCut);
+      startTyping();
     }
   });
 }
