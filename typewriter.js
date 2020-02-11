@@ -8,7 +8,6 @@ let currentText = 0;
 let text;
 let len;
 let textCounter = 0;
-let newString;
 let button = document.querySelector(".button");
 let eachCut;
 let storeTexts;
@@ -23,31 +22,35 @@ const typespace = document.querySelector("#typespace");
 
 let typeArr = [typekey1, typekey2];
 
+// Store strings in array and clear html
 function init() {
   storeTexts = document.querySelectorAll(".typewritten");
   storeTexts.forEach(storeThis);
   function storeThis(thisText) {
     texts.push(thisText.textContent);
-  }
-  let eraser = document.querySelectorAll(".typewritten");
-  eraser.forEach(deleteText);
-  function deleteText(thisText) {
     thisText.textContent = "";
   }
   readyText();
 }
+
+// Prepares current text to be written
 function readyText() {
-  text = texts[currentText];
-  text = text.trim();
-  len = text.length;
-  newString = "";
-  button.addEventListener("click", startTyping);
+  if (texts.length > currentText) {
+    console.log(counter);
+    counter++;
+    text = texts[currentText];
+    text = text.trim();
+    len = text.length;
+    button.addEventListener("click", startTyping);
+  } else {
+    document.querySelector(".button").textContent = "No more lines :-(";
+  }
 }
-// Cut string into individual bits and put them together
+// Write one line with different intervals
 function startTyping() {
   button.removeEventListener("click", startTyping);
   let randomSpeed = Math.floor(Math.random() * (250 - 150) + 150);
-  eachCut = setInterval(cutTheString, randomSpeed);
+  eachCut = setTimeout(cutTheString, randomSpeed);
 }
 
 function cutTheString() {
@@ -59,11 +62,9 @@ function cutTheString() {
     let sound = Math.floor(Math.random() * 2);
     typeArr[sound].play();
   }
-  newString = newString + text[textCounter];
-  console.log(newString);
-  storeTexts[currentText].textContent = newString;
+  storeTexts[currentText].textContent += text[textCounter];
   textCounter++;
-  clearInterval(eachCut);
+  // Check if there are more characters
   if (textCounter == len) {
     currentText++;
     textCounter = 0;
@@ -73,5 +74,3 @@ function cutTheString() {
     startTyping();
   }
 }
-
-// Find each .typewritten class and apply above steps one at a time
