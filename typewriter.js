@@ -34,9 +34,6 @@ function init() {
     }
 
     function cutTheString() {
-      if (e + 1 == len) {
-        clearInterval(eachCut);
-      }
       // Figure out whether the character is a space or any other character
       if (text[e] == " ") {
         // Play sound according to the character
@@ -50,7 +47,11 @@ function init() {
       oneText.textContent = newString;
       e++;
       clearInterval(eachCut);
-      startTyping();
+      if (e == len) {
+        clearInterval(eachCut);
+      } else {
+        startTyping();
+      }
     }
   });
 }
